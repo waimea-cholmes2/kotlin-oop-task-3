@@ -141,7 +141,11 @@ class Steps() {
      * etc.
      */
     fun show() {
-
+        for (i in steps.indices) {
+            val stepNum = i + 1
+            val gnomeName = steps[i]?.name ?: ""
+            println("$stepNum. $gnomeName")
+        }
     }
 
     /**
@@ -199,14 +203,21 @@ class Steps() {
      * Clear any gnomes off the given step (1-5)
      */
     fun clearStep(step: Int) {
-
+        if (step - 1 in steps.indices) {
+            steps[step - 1] = null
+        }
     }
 
     /**
      * Remove a given gnome from the steps
      */
     fun removeGnome(gnome: Gnome) {
-
+        for (i in steps.indices) {
+            if (steps[i] == gnome) {
+                steps[i] = null
+                return
+            }
+        }
     }
 }
 
